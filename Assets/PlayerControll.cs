@@ -6,6 +6,8 @@ public class PlayerControll : MonoBehaviour
 {
     Rigidbody m_rigid;
 
+    GameObject cam;
+
     float x = 0.0f;
     float y = 0.0f;
 
@@ -20,11 +22,7 @@ public class PlayerControll : MonoBehaviour
     {
         initPos = this.gameObject.transform.position;
         m_rigid = this.gameObject.GetComponent<Rigidbody>();
-
-        Vector3 angle;
-        angle = transform.eulerAngles;
-        x = angle.y;
-        y = angle.x;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -32,29 +30,33 @@ public class PlayerControll : MonoBehaviour
     {
         curPos = this.gameObject.transform.position;
 
-        x += Input.GetAxis("Mouse X") * 4;
+        x = Input.GetAxis("Mouse X") * 10;
+        Vector3 rotate = new Vector3(0.0f, x, 0.0f);
+        transform.Rotate(rotate * 1.0f);
 
-        Quaternion rotation = Quaternion.Euler(0.0f, x, 0.0f);
-        transform.rotation = rotation;
+        cam = GameObject.Find("Main Camera");
+        y = Input.GetAxis("Mouse Y") * 2;
+        float angle = cam.transform.eulerAngles.x + (-y);
+        if (!(angle > 20 && angle < 340))
+            cam.transform.RotateAround(transform.position, cam.transform.right, -y);
     }
 
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(Vector3.forward * 0.75f);
+            transform.Translate(Vector3.forward * 3.0f);
 
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(Vector3.left * 0.75f);
+            transform.Translate(Vector3.left * 3.0f);
 
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(Vector3.back * 0.75f);
+            transform.Translate(Vector3.back * 3.0f);
 
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(Vector3.right * 0.75f);
-
+            transform.Translate(Vector3.right * 3.0f);
 
         if (Input.GetKeyDown(KeyCode.Space))
-            m_rigid.AddForce(Vector3.up * 2000.0f);
+            m_rigid.AddForce(Vector3.up * 30000.0f);
 
         if (Input.GetKeyDown(KeyCode.R))
             transform.position = initPos;
