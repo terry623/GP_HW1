@@ -54,16 +54,13 @@ public class PlayerControll : MonoBehaviour
         if (Input.GetKey(KeyCode.D))
             transform.Translate(Vector3.right * 1.0f);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            m_rigid.AddForce(Vector3.up * 30000.0f);
-
         if (Input.GetKeyDown(KeyCode.R))
             transform.position = initPos;
     }
 
     void OnCollisionEnter(Collision other)
     {
-        print(other);
+        // print(other);
     }
 
 }
