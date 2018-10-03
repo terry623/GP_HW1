@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public Object Enemy;
+    public float probability = 0.05f;
 
     // Use this for initialization
     void Start()
@@ -17,8 +18,11 @@ public class EnemyMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject enemy = GameObject.Instantiate(Enemy, Vector3.zero, Quaternion.identity) as GameObject;
-            enemy.transform.position = transform.position - transform.forward * 10.0f;
+            if (Random.value < probability)
+            {
+                GameObject enemy = GameObject.Instantiate(Enemy, Vector3.zero, Quaternion.identity) as GameObject;
+                enemy.transform.position = transform.position - transform.forward * 15.0f;
+            }
         }
     }
 
