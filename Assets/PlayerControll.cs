@@ -44,16 +44,16 @@ public class PlayerControll : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.W))
-            transform.Translate(Vector3.forward * 3.0f);
+            transform.Translate(Vector3.forward * 1.0f);
 
         if (Input.GetKey(KeyCode.A))
-            transform.Translate(Vector3.left * 3.0f);
+            transform.Translate(Vector3.left * 1.0f);
 
         if (Input.GetKey(KeyCode.S))
-            transform.Translate(Vector3.back * 3.0f);
+            transform.Translate(Vector3.back * 1.0f);
 
         if (Input.GetKey(KeyCode.D))
-            transform.Translate(Vector3.right * 3.0f);
+            transform.Translate(Vector3.right * 1.0f);
 
         if (Input.GetKeyDown(KeyCode.Space))
             m_rigid.AddForce(Vector3.up * 30000.0f);
