@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    Rigidbody m_rigid;
-
     // Use this for initialization
     void Start()
     {
-        m_rigid = this.gameObject.GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
@@ -20,6 +18,12 @@ public class EnemyMove : MonoBehaviour
 
     void FixedUpdate()
     {
-        m_rigid.AddForce(Vector3.forward * 1000.0f);
+        transform.Translate(Vector3.forward * 1.0f);
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        Vector3 TurnLeft = new Vector3(0.0f, -90.0f, 0.0f);
+        transform.Rotate(TurnLeft);
     }
 }
