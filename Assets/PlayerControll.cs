@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControll : MonoBehaviour
 {
     Rigidbody m_rigid;
-
     GameObject cam;
 
     float x = 0.0f;
