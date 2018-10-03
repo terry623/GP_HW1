@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
+    bool isNight = false;
+
     // Use this for initialization
     void Start()
     {
@@ -13,17 +15,21 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+            isNight = !isNight;
     }
 
     void FixedUpdate()
     {
-        transform.Translate(Vector3.forward * 1.0f);
+        if (isNight)
+            transform.Translate(Vector3.forward * 1.0f);
+        else
+            transform.Translate(Vector3.forward * 2.0f);
     }
 
     void OnCollisionEnter(Collision other)
     {
-        Vector3 TurnLeft = new Vector3(0.0f, -90.0f, 0.0f);
-        transform.Rotate(TurnLeft);
+        Vector3 rotateDegree = new Vector3(0.0f, Mathf.Round(Random.Range(1, 3)) * 90.0f, 0.0f);
+        transform.Rotate(rotateDegree);
     }
 }
