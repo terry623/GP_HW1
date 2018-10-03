@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Spot : MonoBehaviour
 {
-
     public Light lt;
+    public Light mainLt;
 
     // Use this for initialization
     void Start()
     {
         lt = GetComponent<Light>();
-        lt.enabled = false;
+        mainLt = GetComponent<Light>();
+        lt.enabled = !mainLt.enabled;
     }
 
     // Update is called once per frame

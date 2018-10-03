@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    bool isNight = false;
+    public Object Enemy;
 
     // Use this for initialization
     void Start()
@@ -16,15 +16,15 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
-            isNight = !isNight;
+        {
+            GameObject enemy = GameObject.Instantiate(Enemy, Vector3.zero, Quaternion.identity) as GameObject;
+            enemy.transform.position = transform.position - transform.forward * 10.0f;
+        }
     }
 
     void FixedUpdate()
     {
-        if (isNight)
-            transform.Translate(Vector3.forward * 1.0f);
-        else
-            transform.Translate(Vector3.forward * 2.0f);
+        transform.Translate(Vector3.forward * 0.5f);
     }
 
     void OnCollisionEnter(Collision other)
