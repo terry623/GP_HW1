@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public Object Enemy;
-    public float probability = 0.05f;
+    int enemyProbability = 20;
 
     // Use this for initialization
     void Start()
@@ -18,8 +18,12 @@ public class EnemyMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (Random.value < probability)
+            int ranNum = (int)(Random.value * 100);
+            print("敵人亂數: " + ranNum + ", 機率為 " + enemyProbability);
+
+            if (ranNum < enemyProbability)
             {
+                print("有 1 輛警車產生了");
                 GameObject enemy = GameObject.Instantiate(Enemy, Vector3.zero, Quaternion.identity) as GameObject;
                 enemy.transform.position = transform.position - transform.forward * 15.0f;
             }

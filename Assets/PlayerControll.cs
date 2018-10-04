@@ -6,7 +6,7 @@ public class PlayerControll : MonoBehaviour
 {
     Rigidbody m_rigid;
     GameObject cam;
-    AudioSource audio;
+    AudioSource engineSound;
 
     float x = 0.0f;
     float y = 0.0f;
@@ -22,7 +22,7 @@ public class PlayerControll : MonoBehaviour
     {
         initPos = this.gameObject.transform.position;
         m_rigid = this.gameObject.GetComponent<Rigidbody>();
-        audio = GetComponent<AudioSource>();
+        engineSound = GetComponent<AudioSource>();
         Cursor.visible = false;
     }
 
@@ -44,7 +44,7 @@ public class PlayerControll : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (!audio.isPlaying) audio.Play();
+        if (!engineSound.isPlaying) engineSound.Play();
 
         if (Input.GetKey(KeyCode.W))
             transform.Translate(Vector3.forward * 1.0f);
@@ -56,7 +56,7 @@ public class PlayerControll : MonoBehaviour
             transform.Translate(Vector3.right * 1.0f);
         else if (Input.GetKeyDown(KeyCode.R))
             transform.position = initPos;
-        else audio.Stop();
+        else engineSound.Stop();
     }
 
     void OnCollisionEnter(Collision other)
