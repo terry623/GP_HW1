@@ -6,6 +6,7 @@ TagManager:
   tags:
   - house
   - house-wall
+  - enemy
   layers:
   - Default
   - TransparentFX

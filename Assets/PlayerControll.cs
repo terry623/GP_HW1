@@ -61,7 +61,11 @@ public class PlayerControll : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        // print(other);
+        if (other.gameObject.tag == "enemy")
+        {
+            Destroy(other.gameObject);
+        }
+
     }
 
 }
