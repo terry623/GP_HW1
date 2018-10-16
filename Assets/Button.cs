@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
+    Canvas menuCanvas;
+    GameObject car;
+
     // Use this for initialization
     void Start()
     {
-
+        menuCanvas = GameObject.Find("Menu").GetComponent<Canvas>();
+        car = GameObject.Find("Taxi");
     }
 
     // Update is called once per frame
@@ -17,16 +20,15 @@ public class Button : MonoBehaviour
 
     }
 
-    public void LoadNextScene()
+    public void StartGame()
     {
-        SceneManager.LoadScene("Maze");
-        DisableSomeFunction();
+        menuCanvas.enabled = false;
+        Cursor.visible = false;
+        car.GetComponent<PlayerControll>().enabled = true;
     }
 
-    //關閉Button以免使用者在切換場景時亂按
-    private void DisableSomeFunction()
+    public void Exit()
     {
-        GameObject.Find("start_Button").GetComponent<UnityEngine.UI.Button>().enabled = false;
-        GameObject.Find("quit_Button").GetComponent<UnityEngine.UI.Button>().enabled = false;
+        Application.Quit();
     }
 }

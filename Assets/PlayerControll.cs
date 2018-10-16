@@ -21,7 +21,6 @@ public class PlayerControll : MonoBehaviour
     {
         initPos = this.gameObject.transform.position;
         engineSound = GetComponent<AudioSource>();
-        Cursor.visible = false;
     }
 
     // Update is called once per frame
