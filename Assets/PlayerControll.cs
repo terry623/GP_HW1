@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerControll : MonoBehaviour
 {
-    Rigidbody m_rigid;
     GameObject cam;
     AudioSource engineSound;
 
@@ -21,7 +20,6 @@ public class PlayerControll : MonoBehaviour
     void Start()
     {
         initPos = this.gameObject.transform.position;
-        m_rigid = this.gameObject.GetComponent<Rigidbody>();
         engineSound = GetComponent<AudioSource>();
         Cursor.visible = false;
     }
