@@ -5,12 +5,14 @@ using UnityEngine;
 public class Button : MonoBehaviour
 {
     Canvas menuCanvas;
+    GameObject map;
     GameObject car;
 
     // Use this for initialization
     void Start()
     {
         menuCanvas = GameObject.Find("Menu").GetComponent<Canvas>();
+        map = GameObject.Find("Minimap");
         car = GameObject.Find("Taxi");
     }
 
@@ -23,8 +25,8 @@ public class Button : MonoBehaviour
     public void StartGame()
     {
         menuCanvas.enabled = false;
-        Cursor.visible = false;
         car.GetComponent<PlayerControll>().enabled = true;
+        map.GetComponent<Canvas>().enabled = true;
     }
 
     public void Exit()
