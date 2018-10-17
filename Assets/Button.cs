@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Button : MonoBehaviour
 {
@@ -30,6 +31,11 @@ public class Button : MonoBehaviour
         car.GetComponent<PlayerControll>().enabled = true;
         map.GetComponent<Canvas>().enabled = true;
         tips.GetComponent<Canvas>().enabled = true;
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene("Maze");
     }
 
     public void Exit()
