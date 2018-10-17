@@ -6,6 +6,7 @@ public class Button : MonoBehaviour
 {
     Canvas menuCanvas;
     GameObject map;
+    GameObject tips;
     GameObject car;
 
     // Use this for initialization
@@ -13,6 +14,7 @@ public class Button : MonoBehaviour
     {
         menuCanvas = GameObject.Find("Menu").GetComponent<Canvas>();
         map = GameObject.Find("Minimap");
+        tips = GameObject.Find("Tips");
         car = GameObject.Find("Taxi");
     }
 
@@ -27,6 +29,7 @@ public class Button : MonoBehaviour
         menuCanvas.enabled = false;
         car.GetComponent<PlayerControll>().enabled = true;
         map.GetComponent<Canvas>().enabled = true;
+        tips.GetComponent<Canvas>().enabled = true;
     }
 
     public void Exit()

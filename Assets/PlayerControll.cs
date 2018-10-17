@@ -79,8 +79,8 @@ public class PlayerControll : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "enemy") Finish("被警察抓到了嗚嗚");
-        // else Finish("成功逃出!");
+        if (other.gameObject.tag == "enemy") Finish("被警察抓到了");
+        else if (other.gameObject.tag == "exit") Finish("成功逃出!");
     }
 
 }
